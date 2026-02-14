@@ -1,11 +1,12 @@
 import { Instagram, Mail } from 'lucide-react';
+import profileImg from './assets/profile.jpg';
 
 const Portfolio = () => {
   const data = {
     name: "Ravi Mahar",
     role: "Computer Instructor",
     description: "I am Ravi Mahar, a dedicated Computer Instructor at Govt. Sr. Sec. School Kikarwali. With a deep passion for technology and digital literacy, I specialize in simplifying complex computing concepts for the next generation. My mission is to empower students with the technical skills and logical thinking necessary to thrive in an increasingly digital world.",
-    imageUrl: "src/assets/unnamed.jpg",
+    imageUrl: profileImg,
     socials: [
       { name: 'Instagram', icon: <Instagram/>, url: 'https://instagram.com/ravimahar5695' },
       { name: 'Email', icon: <Mail/>, url: 'mailto: ravimahar5695@gmail.com' }
