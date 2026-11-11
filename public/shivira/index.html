@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>शिविरा पंचांग 2026-2027 | शिक्षा विभाग, राजस्थान</title>
+  <meta name="description" content="राजस्थान शिक्षा विभाग शिविरा पंचांग 2026-2027 - राजकीय एवं गैर-राजकीय विद्यालयों हेतु वार्षिक पंचांग, अवकाश एवं गतिविधियाँ।">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    body { font-family: 'Mukta', 'Plus Jakarta Sans', sans-serif; }
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      header, .no-print, nav { display: none !important; }
+    }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 selection:bg-orange-500 selection:text-white">
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const PANCHANG_DATA = [
+      {
+        monthName: "अप्रैल 2026",
+        year: 2026,
+        monthIndex: 3,
+        stats: { workDays: 23, sundays: 4, holidays: 4, utsav: 1 },
+        events: [
+          { day: 1, type: "admin", title: "सत्रारम्भ एवं समय परिवर्तन", desc: "नवीन शिक्षण सत्र प्रारंभ। एक पारी 07:30 से 01:00 बजे। प्रवेशोत्सव प्रथम चरण (01-25 अप्रैल) व नामांकन अभियान।" },
+          { day: 2, type: "utsav", title: "श्री हनुमान जन्मोत्सव / विश्व ऑटिज्म दिवस", desc: "प्रार्थना सभा में हनुमान जन्मोत्सव एवं विश्व ऑटिज्म जागरूकता दिवस का आयोजन।" },
+          { day: 3, type: "holiday", title: "गुड फ्राइडे (अवकाश)", desc: "राजपत्रित अवकाश।" },
+          { day: 4, type: "admin", title: "स्टाफ बैठक व SMC/SDMC साधारण सभा", desc: "वार्षिक योजना तैयार कर जिला शिक्षा अधिकारी को प्रेषित करना।" },
+          { day: 7, type: "activity", title: "विश्व स्वास्थ्य दिवस (RSCERT)", desc: "स्वास्थ्य जागरूकता सम्बन्धी गतिविधियाँ।" },
+          { day: 8, rangeEnd: 10, type: "exam", title: "स्थानीय पूरक परीक्षाएँ", desc: "कक्षा 9 व 11 की पूरक परीक्षाओं का आयोजन।" },
+          { day: 11, type: "holiday", title: "महात्मा ज्योतिबा फुले जयन्ती (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 14, type: "holiday", title: "डॉ. भीमराव अम्बेडकर जयन्ती (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 15, type: "exam", title: "पूरक परीक्षा परिणाम घोषणा", desc: "स्थानीय पूरक परीक्षा परिणाम की घोषणा एवं प्रगति पत्र वितरण।" },
+          { day: 18, type: "activity", title: "सामुदायिक बाल सभा", desc: "विद्यालय स्तर पर सामुदायिक बाल सभा का भव्य आयोजन।" },
+          { day: 19, type: "holiday", title: "श्री परशुराम जयन्ती (अवकाश)", desc: "सार्वजनिक अवकाश (रविवार)।" },
+          { day: 20, rangeEnd: 21, type: "admin", title: "सत्रारंभ संस्था प्रधान वाक्‌पीठ", desc: "दो दिवसीय संस्था प्रधान वाक्‌पीठ का आयोजन।" },
+          { day: 23, rangeEnd: 25, type: "admin", title: "खेल छात्रावास प्रवेश प्रक्रिया", desc: "सत्र पर्यन्त प्रशिक्षण केन्द्र एवं खेल छात्रावास प्रवेश।" }
+        ]
+      },
+      {
+        monthName: "मई 2026",
+        year: 2026,
+        monthIndex: 4,
+        stats: { workDays: 14, sundays: 5, holidays: 15, utsav: 1 },
+        events: [
+          { day: 4, rangeEnd: 31, type: "admin", title: "प्रवेशोत्सव द्वितीय चरण प्रारंभ", desc: "नामांकन अभियान (CSR मॉड्यूल) व शेष बच्चों का हाउस होल्ड सर्वे (04 मई से 04 जुलाई)।" },
+          { day: 7, type: "utsav", title: "रवीन्द्र नाथ टैगोर जयन्ती (उत्सव)", desc: "प्रार्थना सभा में उत्सव आयोजन।" },
+          { day: 13, rangeEnd: 15, type: "exam", title: "प्रथम परख (First Assessment)", desc: "कक्षा 6 से 12 तक प्रथम परख (कालांश 3-4 व 7-8 में परीक्षा, शेष में शिक्षण)।" },
+          { day: 16, type: "activity", title: "PTM-I एवं सामुदायिक बाल सभा", desc: "प्रथम परख पश्चात अभिभावक-शिक्षक बैठक (PTM-I) एवं बाल सभा।" },
+          { day: 17, rangeEnd: 31, type: "holiday", title: "ग्रीष्मावकाश प्रारंभ", desc: "17 मई से 20 जून तक ग्रीष्मावकाश।" },
+          { day: 28, type: "holiday", title: "वीर सावरकर जयन्ती / ईद उल जुहा", desc: "राजपत्रित अवकाश (ग्रीष्मावकाश के दौरान)।" }
+        ]
+      },
+      {
+        monthName: "जून 2026",
+        year: 2026,
+        monthIndex: 5,
+        stats: { workDays: 7, sundays: 4, holidays: 21, utsav: 1 },
+        events: [
+          { day: 1, rangeEnd: 20, type: "holiday", title: "ग्रीष्मकालीन अवकाश जारी", desc: "20 जून तक ग्रीष्मावकाश।" },
+          { day: 17, type: "holiday", title: "महाराणा प्रताप जयन्ती (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 21, type: "utsav", title: "अन्तर्राष्ट्रीय योग दिवस", desc: "प्रातः 7 से 8 बजे तक समस्त विद्यालयों में योग दिवस आयोजन।" },
+          { day: 21, rangeEnd: 30, type: "admin", title: "व्यावसायिक शिक्षा काउंसलिंग", desc: "व्यावसायिक शिक्षा संचालित विद्यालयों में प्रचार व प्रवेश काउंसलिंग।" },
+          { day: 26, type: "holiday", title: "मोहर्रम (अवकाश)", desc: "राजपत्रित अवकाश।" },
+          { day: 28, type: "utsav", title: "भामाशाह जयन्ती (उत्सव)", desc: "उत्सव का आयोजन।" }
+        ]
+      },
+      {
+        monthName: "जुलाई 2026",
+        year: 2026,
+        monthIndex: 6,
+        stats: { workDays: 27, sundays: 4, holidays: 0, utsav: 3 },
+        events: [
+          { day: 11, type: "admin", title: "कक्षा 9 से 12 प्रवेश की अन्तिम तिथि", desc: "प्रवेश की अंतिम तिथि / विश्व जनसंख्या दिवस (उत्सव) / बाल सभा।" },
+          { day: 23, type: "utsav", title: "लोकमान्य बाल गंगाधर तिलक जयन्ती", desc: "प्रार्थना सभा में उत्सव का आयोजन।" },
+          { day: 28, type: "activity", title: "प्रकृति संरक्षण दिवस", desc: "पर्यावरण व प्रकृति संरक्षण कार्यक्रम।" },
+          { day: 29, type: "utsav", title: "गुरु पूर्णिमा एवं वृक्षारोपण दिवस", desc: "गुरु पूर्णिमा उत्सव व विद्यालय में प्रथम चरण वृक्षारोपण।" }
+        ]
+      },
+      {
+        monthName: "अगस्त 2026",
+        year: 2026,
+        monthIndex: 7,
+        stats: { workDays: 23, sundays: 5, holidays: 4, utsav: 4 },
+        events: [
+          { day: 5, type: "utsav", title: "स्वर्णमुकुट मस्तक दिवस (उत्सव)", desc: "उत्सव आयोजन।" },
+          { day: 8, type: "activity", title: "कृमि मुक्ति दिवस (National Deworming Day)", desc: "एल्बेंडाजॉल गोली वितरण एवं सामुदायिक बाल सभा।" },
+          { day: 9, type: "holiday", title: "विश्व आदिवासी दिवस (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 13, type: "utsav", title: "वीर दुर्गादास राठौड़ जयन्ती (उत्सव)", desc: "प्रार्थना सभा में उत्सव।" },
+          { day: 15, type: "holiday", title: "स्वतंत्रता दिवस (उत्सव अनिवार्य)", desc: "राष्ट्रीय पर्व, ध्वजारोहण व मतदाता शपथ (ELC)।" },
+          { day: 17, rangeEnd: 19, type: "exam", title: "द्वितीय परख (Second Assessment)", desc: "कक्षा 6 से 12 हेतु द्वितीय परख परीक्षा।" },
+          { day: 20, type: "activity", title: "सद्भावना दिवस / 43वीं नेहरू हॉकी", desc: "राजीव गांधी जयन्ती व जिला स्तरीय नेहरू हॉकी प्रतियोगिता।" },
+          { day: 22, type: "activity", title: "रोल प्ले एवं लोक नृत्य प्रतियोगिता", desc: "विद्यालय स्तर पर प्रतियोगिता (RSCERT)।" },
+          { day: 26, type: "holiday", title: "बाराबफात (अवकाश)", desc: "राजपत्रित अवकाश।" },
+          { day: 27, type: "utsav", title: "रक्षा सूत्र बन्धन दिवस (उत्सव)", desc: "रक्षा बन्धन से पूर्व दिवस पर उत्सव।" },
+          { day: 28, type: "holiday", title: "रक्षा बन्धन (अवकाश) व संस्कृत दिवस", desc: "सार्वजनिक अवकाश।" },
+          { day: 29, type: "activity", title: "राष्ट्रीय खेल दिवस (मेजर ध्यानचन्द जयन्ती)", desc: "खेलकूद गतिविधियाँ।" },
+          { day: 30, rangeEnd: 31, type: "activity", title: "जिला स्तरीय खेलकूद (प्रथम चरण)", desc: "14/17/19 वर्ष छात्र-छात्रा खेलकूद (30 अगस्त से 03 सितम्बर)।" }
+        ]
+      },
+      {
+        monthName: "सितम्बर 2026",
+        year: 2026,
+        monthIndex: 8,
+        stats: { workDays: 24, sundays: 4, holidays: 2, utsav: 3 },
+        events: [
+          { day: 1, rangeEnd: 15, type: "activity", title: "स्वच्छता पखवाड़ा", desc: "समस्त विद्यालयों में 01 से 15 सितम्बर तक स्वच्छता पखवाड़ा अनिवार्य।" },
+          { day: 4, type: "holiday", title: "श्री कृष्ण जन्माष्टमी (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 5, type: "utsav", title: "शिक्षक दिवस (उत्सव)", desc: "राज्य स्तरीय शिक्षक सम्मान समारोह व शिक्षक कल्याण झण्डियों की बिक्री।" },
+          { day: 8, type: "utsav", title: "विश्व साक्षरता दिवस (उत्सव)", desc: "मतदाता साक्षरता निबन्ध प्रतियोगिता (ELC)।" },
+          { day: 9, rangeEnd: 15, type: "activity", title: "राज्य स्तरीय खेलकूद (प्रथम चरण)", desc: "आयु वर्ग 14/17/19 वर्ष खेलकूद।" },
+          { day: 12, rangeEnd: 16, type: "activity", title: "जिला स्तरीय खेलकूद (द्वितीय चरण)", desc: "आयु वर्ग 14/17/19 वर्ष।" },
+          { day: 14, type: "utsav", title: "हिन्दी दिवस एवं गणेश चतुर्थी (उत्सव)", desc: "प्रार्थना सभा व विशेष कार्यक्रमों का आयोजन।" },
+          { day: 18, rangeEnd: 19, type: "admin", title: "जिला स्तरीय शिक्षक सम्मेलन", desc: "दो दिवसीय शिक्षक सम्मेलन।" },
+          { day: 21, type: "holiday", title: "रामदेव जयन्ती / तेजा दशमी", desc: "सार्वजनिक अवकाश।" },
+          { day: 22, rangeEnd: 28, type: "activity", title: "राज्य स्तरीय खेलकूद (द्वितीय चरण)", desc: "विद्यालयी खेलकूद।" },
+          { day: 26, type: "activity", title: "विद्यालय स्तरीय विज्ञान मेला", desc: "एक दिवसीय विज्ञान प्रदर्शनी (RSCERT)।" }
+        ]
+      },
+      {
+        monthName: "अक्टूबर 2026",
+        year: 2026,
+        monthIndex: 9,
+        stats: { workDays: 24, sundays: 4, holidays: 4, utsav: 2 },
+        events: [
+          { day: 1, type: "admin", title: "शीतकालीन समय परिवर्तन", desc: "एक पारी विद्यालय प्रातः 10:00 से 04:00 बजे तक (कुल 6:00 घंटे)।" },
+          { day: 2, type: "holiday", title: "गांधी जयन्ती व शास्त्री जयन्ती", desc: "अवकाश-उत्सव अनिवार्य, गांधी दर्शन नाटक व डाक्यूमेंट्री।" },
+          { day: 10, type: "activity", title: "विश्व मानसिक स्वास्थ्य दिवस", desc: "मानसिक स्वास्थ्य जागरूकता।" },
+          { day: 11, type: "holiday", title: "अन्तर्राष्ट्रीय बालिका दिवस / नवरात्रा", desc: "अवकाश व बालिका दिवस।" },
+          { day: 12, rangeEnd: 14, type: "activity", title: "जिला स्तरीय विज्ञान मेला", desc: "RSCERT द्वारा आयोज्य तीन दिवसीय मेला।" },
+          { day: 15, rangeEnd: 29, type: "exam", title: "अर्द्धवार्षिक परीक्षा एवं CBA दक्षता आकलन", desc: "कक्षा 6 से 12 की अर्द्धवार्षिक परीक्षा व SA-2 दक्षता आकलन।" },
+          { day: 19, type: "holiday", title: "दुर्गाष्टमी (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 20, type: "holiday", title: "विजयदशमी / दशहरा (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 31, type: "utsav", title: "राष्ट्रीय एकता दिवस / संकल्प दिवस", desc: "सरदार पटेल जयन्ती व इन्दिरा गांधी पुण्यतिथि।" }
+        ]
+      },
+      {
+        monthName: "नवम्बर 2026",
+        year: 2026,
+        monthIndex: 10,
+        stats: { workDays: 14, sundays: 5, holidays: 13, utsav: 2 },
+        events: [
+          { day: 4, rangeEnd: 15, type: "holiday", title: "मध्यावधि अवकाश (दीपावली अवकाश)", desc: "04 से 15 नवम्बर 2026 तक मध्यावधि अवकाश।" },
+          { day: 8, type: "holiday", title: "दीपावली (अवकाश)", desc: "दीपोत्सव महापर्व।" },
+          { day: 9, type: "holiday", title: "गोवर्धन पूजा (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 11, type: "holiday", title: "भाई दूज व राष्ट्रीय शिक्षा दिवस", desc: "अवकाश व राष्ट्रीय शिक्षा दिवस।" },
+          { day: 14, type: "activity", title: "बाल दिवस (नेहरू जयन्ती)", desc: "बाल दिवस कार्यक्रम।" },
+          { day: 18, rangeEnd: 21, type: "activity", title: "राज्य स्तरीय विज्ञान मेला", desc: "चार दिवसीय राज्य स्तरीय विज्ञान मेला (RSCERT)।" },
+          { day: 19, rangeEnd: 25, type: "activity", title: "समरसता सप्ताह", desc: "कौमी एकता व समरसता सप्ताह आयोजन।" },
+          { day: 21, type: "activity", title: "PTM-II एवं सामुदायिक बाल सभा", desc: "कालिदास जयन्ती व अभिभावक-शिक्षक बैठक।" },
+          { day: 24, type: "holiday", title: "गुरु नानक जयन्ती (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 26, type: "utsav", title: "राष्ट्रीय संविधान दिवस (उत्सव)", desc: "संविधान प्रस्तावना पठन व मतदाता अधिकार जागरूकता।" },
+          { day: 27, rangeEnd: 28, type: "admin", title: "राज्य स्तरीय शिक्षक सम्मेलन", desc: "दो दिवसीय राज्य स्तरीय सम्मेलन।" }
+        ]
+      },
+      {
+        monthName: "दिसम्बर 2026",
+        year: 2026,
+        monthIndex: 11,
+        stats: { workDays: 25, sundays: 4, holidays: 2, utsav: 2 },
+        events: [
+          { day: 1, type: "utsav", title: "विश्व एड्स दिवस / विश्व एकता दिवस", desc: "स्वास्थ्य जागरूकता कार्यक्रम।" },
+          { day: 3, type: "activity", title: "विश्व विशेष योग्यजन दिवस", desc: "समावेशी शिक्षा सम्बन्धी गतिविधियाँ।" },
+          { day: 10, type: "utsav", title: "अन्तर्राष्ट्रीय मानवाधिकार दिवस", desc: "भाषण प्रतियोगिता (वोट का संवैधानिक अधिकार)।" },
+          { day: 12, type: "activity", title: "सामुदायिक बाल सभा", desc: "विद्यालय स्तर पर सामुदायिक बाल सभा।" },
+          { day: 17, rangeEnd: 19, type: "exam", title: "तृतीय परख (Third Assessment)", desc: "कक्षा 6 से 12 तक तृतीय परख परीक्षा।" },
+          { day: 20, type: "exam", title: "NMMSS राज्य स्तरीय चयन परीक्षा", desc: "नेशनल मीन्स कम मेरिट छात्रवृत्ति चयन परीक्षा 2026।" },
+          { day: 25, type: "holiday", title: "क्रिसमस डे (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 26, type: "utsav", title: "वीर बाल दिवस", desc: "वीर बालकों के बलिदान को नमन।" },
+          { day: 31, rangeEnd: 31, type: "holiday", title: "शीतकालीन अवकाश प्रारंभ", desc: "31 दिसम्बर 2026 से 10 जनवरी 2027 तक शीतकालीन अवकाश।" }
+        ]
+      },
+      {
+        monthName: "जनवरी 2027",
+        year: 2027,
+        monthIndex: 0,
+        stats: { workDays: 17, sundays: 5, holidays: 11, utsav: 8 },
+        events: [
+          { day: 1, rangeEnd: 10, type: "holiday", title: "शीतकालीन अवकाश जारी", desc: "10 जनवरी तक शीतकालीन अवकाश।" },
+          { day: 4, type: "activity", title: "विश्व ब्रेल दिवस (लुई ब्रेल)", desc: "SMC/SDMC सदस्यों की सक्रिय भागीदारी।" },
+          { day: 10, type: "utsav", title: "विश्व हिन्दी दिवस", desc: "हिन्दी दिवस आयोजन।" },
+          { day: 12, type: "utsav", title: "स्वामी विवेकानन्द जयन्ती (युवा दिवस)", desc: "राष्ट्रीय युवा दिवस उत्सव।" },
+          { day: 13, type: "utsav", title: "लोहड़ी पर्व (उत्सव)", desc: "लोहड़ी उत्सव।" },
+          { day: 14, type: "utsav", title: "मकर संक्रान्ति (उत्सव)", desc: "मकर संक्रान्ति उत्सव।" },
+          { day: 15, type: "holiday", title: "गुरु गोविन्द सिंह जयन्ती व कैरियर डे", desc: "अवकाश एवं कैरियर मार्गदर्शन दिवस।" },
+          { day: 16, type: "activity", title: "PTM-III एवं सामुदायिक बाल सभा", desc: "अभिभावक-शिक्षक बैठक।" },
+          { day: 22, type: "utsav", title: "श्रीरामलला प्राण प्रतिष्ठा दिवस (उत्सव)", desc: "उत्सव आयोजन।" },
+          { day: 23, type: "utsav", title: "नेताजी सुभाष चन्द्र बोस जयन्ती", desc: "पराक्रम दिवस उत्सव।" },
+          { day: 24, type: "utsav", title: "राष्ट्रीय बालिका दिवस (उत्सव)", desc: "बालिका सशक्तिकरण कार्यक्रम।" },
+          { day: 25, type: "activity", title: "राष्ट्रीय मतदाता दिवस (National Voters Day)", desc: "नाट्य मंचन, पोस्टर, वाद-विवाद व ELC प्रश्नोत्तरी।" },
+          { day: 26, type: "holiday", title: "गणतंत्र दिवस (अवकाश - उत्सव अनिवार्य)", desc: "राष्ट्रीय पर्व, ध्वजारोहण व मतदाता शपथ।" },
+          { day: 30, type: "utsav", title: "शहीद दिवस (गांधीजी पुण्यतिथि)", desc: "प्रातः 11:00 बजे 2 मिनट का मौन।" }
+        ]
+      },
+      {
+        monthName: "फरवरी 2027",
+        year: 2027,
+        monthIndex: 1,
+        stats: { workDays: 23, sundays: 4, holidays: 1, utsav: 3 },
+        events: [
+          { day: 9, type: "activity", title: "सुरक्षित इंटरनेट दिवस (RSCERT)", desc: "साइबर सुरक्षा जागरूकता।" },
+          { day: 11, type: "utsav", title: "बसन्त पंचमी / गार्गी पुरस्कार", desc: "सरस्वती पूजन एवं गार्गी पुरस्कार वितरण समारोह।" },
+          { day: 12, type: "utsav", title: "सूर्य नमस्कार (उत्सव)", desc: "सामूहिक सूर्य नमस्कार दिवस।" },
+          { day: 13, type: "holiday", title: "देवनारायण जयन्ती / मातृ-पितृ पूजन दिवस", desc: "सार्वजनिक अवकाश एवं पाती मां और पिता के नाम।" },
+          { day: 19, type: "utsav", title: "छत्रपति शिवाजी महाराज जयन्ती (उत्सव)", desc: "शिवाजी जयन्ती उत्सव।" },
+          { day: 20, type: "activity", title: "सन्त रविदास जयन्ती व बाल सभा", desc: "सामुदायिक बाल सभा आयोजन।" },
+          { day: 28, type: "utsav", title: "राष्ट्रीय विज्ञान दिवस व प्रताप राज्यारोहण", desc: "विज्ञान मॉडल प्रदर्शन व व्याख्यान।" }
+        ]
+      },
+      {
+        monthName: "मार्च 2027",
+        year: 2027,
+        monthIndex: 2,
+        stats: { workDays: 23, sundays: 4, holidays: 5, utsav: 2 },
+        events: [
+          { day: 2, type: "utsav", title: "स्वामी दयानन्द सरस्वती जयन्ती (उत्सव)", desc: "प्रार्थना सभा में उत्सव।" },
+          { day: 6, type: "holiday", title: "महाशिवरात्रि (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 8, type: "utsav", title: "अन्तर्राष्ट्रीय महिला दिवस", desc: "महिला दिवस उत्सव।" },
+          { day: 8, rangeEnd: 20, type: "exam", title: "वार्षिक परीक्षा एवं SA-3 आकलन", desc: "कक्षा 6, 7, 9, 11 की वार्षिक परीक्षा व प्राथमिक SA-3।" },
+          { day: 10, type: "holiday", title: "ईदुलफितर (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 13, type: "activity", title: "सामुदायिक बाल सभा", desc: "विद्यालय स्तर पर सामुदायिक बाल सभा।" },
+          { day: 21, type: "holiday", title: "होलिका दहन (अवकाश)", desc: "सार्वजनिक अवकाश।" },
+          { day: 22, type: "holiday", title: "धुलण्डी (अवकाश)", desc: "होली धुलण्डी अवकाश।" },
+          { day: 25, type: "exam", title: "स्थानीय वार्षिक परीक्षा परिणाम", desc: "परीक्षा परिणाम घोषणा एवं विद्यार्थियों को प्रगति पत्र वितरण।" },
+          { day: 26, type: "holiday", title: "गुड फ्राइडे (अवकाश)", desc: "राजपत्रित अवकाश।" },
+          { day: 29, rangeEnd: 30, type: "admin", title: "सत्रान्त संस्था प्रधान वाक्‌पीठ", desc: "दो दिवसीय सत्रान्त वाक्‌पीठ आयोजन।" }
+        ]
+      }
+    ];
+
+    const TAG_META = {
+      holiday: { label: "राजकीय अवकाश", badgeClass: "bg-red-500 text-white", borderClass: "border-l-red-500" },
+      utsav: { label: "उत्सव / जयन्ती", badgeClass: "bg-amber-500 text-slate-900 font-semibold", borderClass: "border-l-amber-500" },
+      exam: { label: "परीक्षा / परख", badgeClass: "bg-purple-500 text-white", borderClass: "border-l-purple-500" },
+      activity: { label: "सहशैक्षिक / खेल", badgeClass: "bg-cyan-500 text-slate-900 font-semibold", borderClass: "border-l-cyan-500" },
+      admin: { label: "प्रशासनिक", badgeClass: "bg-emerald-500 text-slate-900 font-semibold", borderClass: "border-l-emerald-500" },
+    };
+
+    function App() {
+      const [currentIdx, setCurrentIdx] = useState(0);
+      const [filter, setFilter] = useState("all");
+      const [showModal, setShowModal] = useState(false);
+      const [highlightedDay, setHighlightedDay] = useState(null);
+
+      useEffect(() => {
+        if (window.lucide) window.lucide.createIcons();
+      }, [currentIdx, filter, showModal]);
+
+      const curMonth = PANCHANG_DATA[currentIdx];
+      const firstDayOfWeek = new Date(curMonth.year, curMonth.monthIndex, 1).getDay();
+      const daysInMonth = new Date(curMonth.year, curMonth.monthIndex + 1, 0).getDate();
+
+      const calendarCells = [];
+      for (let i = 0; i < firstDayOfWeek; i++) calendarCells.push(null);
+      for (let d = 1; d <= daysInMonth; d++) calendarCells.push(d);
+
+      const filteredEvents = filter === "all"
+        ? curMonth.events
+        : curMonth.events.filter(ev => ev.type === filter);
+
+      const getDayEvents = (day) => {
+        return curMonth.events.filter(e => {
+          if (e.rangeEnd) return day >= e.day && day <= e.rangeEnd;
+          return e.day === day;
+        });
+      };
+
+      const scrollToEvent = (day) => {
+        setHighlightedDay(day);
+        const el = document.getElementByI
